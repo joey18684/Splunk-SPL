@@ -1,0 +1,5 @@
+| stats sum(NOOFVIRUSES) as total1
+| appendpipe [| stats count | where count=0]
+| fillnull total1,count value=0
+| eval 05已攔截威脅事件總數=(total1+count)
+| fields 05已攔截威脅事件總數
